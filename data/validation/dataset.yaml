@@ -1,5 +1,5 @@
-# Dataset configuration for YOLO training
-path: /Users/matt/scripts/signature_detection/data/dataset
+# Validation dataset configuration for YOLO training
+path: /Users/matt/scripts/signature_detection/data/validation
 train: train/images
 val: val/images
 

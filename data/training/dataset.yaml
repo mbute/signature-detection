@@ -1,5 +1,5 @@
-# Augmented dataset configuration for YOLO training
-path: /Users/matt/scripts/signature_detection/data/augmented
+# Training dataset configuration for YOLO training
+path: /Users/matt/scripts/signature_detection/data/training
 train: images
 val: images  # Use same images for validation in small dataset
 
