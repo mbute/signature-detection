@@ -1,0 +1,153 @@
+# Signature Detection & Compliance Checker Configuration
+
+# Model Configuration
+model:
+  # YOLOv8 model settings
+  yolo:
+    model_size: "yolov8n"  # yolov8n, yolov8s, yolov8m, yolov8l, yolov8x
+    confidence_threshold: 0.5
+    iou_threshold: 0.45
+    max_detections: 100
+  
+  # Signature classification
+  signature_types:
+    - "handwritten"
+    - "digital"
+    - "blank"
+    - "stamp"
+  
+  # Model paths
+  weights_path: "data/models/signature_detector.pt"
+  backup_path: "data/models/backup/"
+
+# OCR Configuration
+ocr:
+  # Primary OCR engine
+  engine: "paddleocr"  # paddleocr, tesseract, easyocr
+  
+  # PaddleOCR settings
+  paddleocr:
+    use_angle_cls: true
+    lang: "en"
+    use_gpu: false
+    show_log: false
+  
+  # Tesseract settings
+  tesseract:
+    config: "--psm 6 --oem 3"
+    lang: "eng"
+  
+  # Text extraction settings
+  text_extraction:
+    min_confidence: 0.6
+    max_distance: 100  # pixels between signature and text
+    role_keywords:
+      - "contracting officer"
+      - "contract specialist"
+      - "program manager"
+      - "technical representative"
+      - "legal counsel"
+
+# PDF Processing
+pdf:
+  # Image conversion settings
+  dpi: 300
+  format: "PNG"
+  grayscale: false
+  
+  # Page processing
+  min_page_size: 1000  # minimum page width/height in pixels
+  max_pages: 50  # maximum pages to process per document
+  
+  # Preprocessing
+  preprocessing:
+    deskew: true
+    denoise: true
+    enhance_contrast: true
+
+# Compliance Matrix
+compliance:
+  # Document types and required signatures
+  document_types:
+    pre_solicitation:
+      required_signatures:
+        - "contracting_officer"
+        - "program_manager"
+      optional_signatures:
+        - "legal_counsel"
+    
+    solicitation:
+      required_signatures:
+        - "contracting_officer"
+        - "contract_specialist"
+      optional_signatures:
+        - "technical_representative"
+    
+    award_decision:
+      required_signatures:
+        - "contracting_officer"
+        - "source_selection_authority"
+      optional_signatures:
+        - "legal_counsel"
+        - "program_manager"
+    
+    contract_modification:
+      required_signatures:
+        - "contracting_officer"
+      optional_signatures:
+        - "contract_specialist"
+        - "program_manager"
+
+# Data Processing
+data:
+  # Input/Output paths
+  raw_data_path: "data/raw/"
+  processed_data_path: "data/processed/"
+  labels_path: "data/labels/"
+  
+  # Training data settings
+  training:
+    train_split: 0.8
+    val_split: 0.15
+    test_split: 0.05
+    augmentations: true
+  
+  # Annotation format
+  annotation_format: "yolo"  # yolo, coco, pascal
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
+  file_path: "logs/signature_detection.log"
+  max_size: "10 MB"
+  rotation: "1 day"
+
+# Performance
+performance:
+  # GPU settings
+  use_gpu: false
+  gpu_memory_fraction: 0.8
+  
+  # Batch processing
+  batch_size: 4
+  num_workers: 2
+  
+  # Caching
+  enable_cache: true
+  cache_size: 1000
+
+# Output
+output:
+  # Report generation
+  generate_reports: true
+  report_format: "json"  # json, csv, pdf
+  
+  # Visualization
+  save_annotations: true
+  annotation_format: "png"
+  
+  # Export settings
+  export_path: "output/"
+  include_confidence: true
+  include_metadata: true 

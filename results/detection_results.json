@@ -1,0 +1,41 @@
+{
+  "pdf_path": "data/raw/Pre-sol.pdf",
+  "total_pages": 4,
+  "total_signatures": 0,
+  "detections": [],
+  "page_info": [
+    {
+      "page_number": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "rotation": 0,
+      "has_text": true,
+      "text_length": 2799
+    },
+    {
+      "page_number": 2,
+      "width": 612.0,
+      "height": 792.0,
+      "rotation": 0,
+      "has_text": true,
+      "text_length": 3414
+    },
+    {
+      "page_number": 3,
+      "width": 612.0,
+      "height": 792.0,
+      "rotation": 0,
+      "has_text": true,
+      "text_length": 3304
+    },
+    {
+      "page_number": 4,
+      "width": 612.0,
+      "height": 792.0,
+      "rotation": 0,
+      "has_text": true,
+      "text_length": 437
+    }
+  ],
+  "processing_time": null
+}

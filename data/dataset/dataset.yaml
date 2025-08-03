@@ -1,0 +1,14 @@
+# Dataset configuration for YOLO training
+path: /Users/matt/scripts/signature_detection/data/dataset
+train: train/images
+val: val/images
+
+# Number of classes
+nc: 4
+
+# Class names
+names:
+  0: handwritten_signature
+  1: digital_signature
+  2: blank_signature_block
+  3: stamp_signature
